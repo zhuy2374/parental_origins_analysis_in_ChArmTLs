@@ -21,7 +21,7 @@ SLURM_PARTITION="your_partition"  # Modify to match your target partition
 # Path to the sample list file
 SAMPLE_LIST="${WORK_DIR}/sample_name_list_file"
 
-# Mapping file containing the absolute paths to the corresponding HiFi/CCS BAM files
+# File containing the absolute paths to the corresponding HiFi/CCS BAM files
 BAM_PATH_LIST="${WORK_DIR}/sample_ccsbam_path_list_file"
 
 # Ensure the script and log directory exist before generating scripts
@@ -47,10 +47,11 @@ echo "#!/bin/bash
 source ${CONDA_SH_PATH}
 conda activate telogator2
 
-cd ${WORK_DIR}
+mkdir -p ${WORK_DIR}/${individual}
+cd ${WORK_DIR}/${individual}
 
 # Run Telogator2 on HiFi data
-python ${TELOGATOR_SCRIPT} -i ${individual_bam_path} -r hifi -n 2 -p 8 -o ${individual}/
+python ${TELOGATOR_SCRIPT} -i ${individual_bam_path} -r hifi -n 2 -p 8 -o ${individual}_telo_out/
 
 " > ${WORK_DIR}/scripts/${individual}_telogator2
 
