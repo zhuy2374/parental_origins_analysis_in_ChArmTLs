@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==============================================================================
-# Description: Batch generate and submit Telogator2 jobs.
+# Description: Batch generate Telogator2 jobs.
 # ==============================================================================
 
 # ------------------ Paths and Environment (Users must modify) ------------------
