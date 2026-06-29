@@ -4,7 +4,7 @@
 
 This directory contains the batch processing and data aggregation scripts for running Telogator2. 
 
-* **`batch_generate_telogator2_jobs.sh`**
+* **`batch_telogator2_jobs.sh`**
   This script iterates through a cohort sample list and dynamically generates individual Slurm submission scripts.
 
 * **`merge_telogator2_results.sh`**
