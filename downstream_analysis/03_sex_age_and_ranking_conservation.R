@@ -4,25 +4,48 @@ setwd("Path/to/your_workdir")
 getwd()
 
 ############################ Load R package and data ###########################
-library(readxl)    #读取excel表
+cran_packages <- c(
+  "readxl", "dplyr", "writexl", "lme4", "lmerTest", 
+  "broom.mixed", "tidyverse", "ggplot2", "scales", 
+  "tidytext", "ggh4x", "tidyr", "circlize", 
+  "RColorBrewer", "ggplotify", "cowplot", 
+  "Hmisc", "corrplot"
+)
+
+# Only install packages that are not already installed
+new_packages <- cran_packages[!(cran_packages %in% installed.packages()[,"Package"])]
+if(length(new_packages)) install.packages(new_packages)
+
+# Install Bioconductor packages (for ComplexHeatmap)
+if (!require("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+
+# Install ComplexHeatmap if it's not already installed
+if (!require("ComplexHeatmap", quietly = TRUE)) {
+  BiocManager::install("ComplexHeatmap")
+}
+
+
+library(readxl)          # Read Excel files
 library(dplyr)
-library(writexl)    #保存excel表
-library(lme4)    #混合线性模型
-library(lmerTest)    #为lmer模型拟合对象补充了固定效应的P值
-library(broom.mixed)    #整理混合线性模型结果
-library(tidyverse)    #unnest函数
+library(writexl)         # Save/write Excel files
+library(lme4)            # Linear mixed-effects models
+library(lmerTest)        # Provides p-values for fixed effects in lmer models
+library(broom.mixed)     # Tidy up mixed-effects model results
+library(tidyverse)       # unnest function (and core data manipulation)
 library(ggplot2)
 library(scales)
-library(tidytext)   # 提供 reorder_within 和 scale_x_reordered
-library(ggh4x)    #facet_wrap2,修改分面标签背景颜色
+library(tidytext)        # Provides reorder_within and scale_x_reordered
+library(ggh4x)           # facet_wrap2, modify facet strip background color
 library(tidyr)
-library(circlize)        # 提供colorRamp2函数
+library(circlize)        # Provides colorRamp2 function
 library(RColorBrewer)
 library(ComplexHeatmap)
-library(ggplotify)    #把热图转成ggplot对象
+library(ggplotify)       # Convert heatmaps to ggplot objects
 library(cowplot)
-library(Hmisc)    #用于rcorr 函数（计算相关系数和 p 值）
-library(corrplot)     #用于可视化相关性矩阵
+library(Hmisc)           # For rcorr function (calculate correlation coefficients and p-values)
+library(corrplot)        # For visualizing correlation matrices
 
 
 tlens <- read_xlsx("tlens_chr_filtered.xlsx")
