@@ -19,3 +19,16 @@ This directory contains the R scripts used for the data cleaning, statistical an
 
 * **`02_post_qc_summary.R`**
   Generates descriptive statistics and visualization for the post-QC data.
+
+* **`03_sex_age_and_ranking_conservation.R`**
+  Conducts a multi-faceted statistical evaluation and visualization of ChArmTLs:
+  1. Variation of ChArmTLs across different sexes.
+  2. Correlation between ChArmTLs and age.
+  3. Ranking conservation of ChArmTLs.
+
+* **`04_parental_origin_comparison.R`**
+  Compares the ChArmTL differences between paternal and maternal haplotypes within the offspring. This script applies statistical tests to rigorously evaluate and visualize the parent-of-origin effects on telomere lengths.
+
+* **`05_validation_in_CEPH-1463.R`**
+  Performs an independent validation analysis using the classic CEPH 1463 family dataset.
+  
